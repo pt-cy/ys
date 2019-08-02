@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>产品列表</title>
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" name="viewport" />
+	<meta content="yes" name="apple-mobile-web-app-capable" />
+	<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+	<meta content="telephone=no" name="format-detection" />
+	<link rel="stylesheet" type="text/css" href="./themes/css/base.css">
+	<link rel="stylesheet" type="text/css" href="./themes/css/home.css">
+	<link rel="stylesheet" type="text/css" href="./themes/css/icon.css">
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<link href="iTunesArtwork@2x.png" sizes="114x114" rel="apple-touch-icon-precomposed">
+</head>
+
+<body>
+
+  <div style="top:126px;" id="app">
+    <div class="aui-scrollView" id="zongyi">
+	
+      <article class="aui-scrollView-list">
+        <a  class="aui-scrollView-list-item" onClick="openWin('jifen_win')"  >
+          <div class="aui-product-list-img">
+            <img  src="../image/vip.png" alt="" >   
+          </div>
+          <div class="aui-product-list-text">
+            <h3 class="aui-product-list-title">VIP体验卡</h3>
+            <div class="aui-product-list-center">
+              <div>
+                <span class="aui-product-list-price"><em>¥</em> <span>0</span></span>
+                <span class="aui-product-list-del-price">¥<span >100</span></span>
+              </div>
+              <div class="aui-product-evaluate">100%好评</div>
+            </div>
+          </div>
+        </a>
+      </article>
+	  
+    </div>
+  </div>
+
+	
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+	<script type="text/javascript">
+	  var api_url = localStorage.getItem('api_url');
+		apiready = function() {
+
+			list();
+
+		};
+		
+		function list(){
+		var zongyi = $api.byId('zongyi');//html容器
+			api.ajax({
+            url: api_url+'/App/Index/shop.html',
+            method: 'get',
+        },function(ret, err){
+            if (ret) {
+			//alert(ret);
+                	var html = '';
+						html +='<article class="aui-scrollView-list">';
+						html += "<a  class='aui-scrollView-list-item' onclick=\"openWin()\">";
+						html +='<div class="aui-product-list-img">';
+						html +='<img  src="../image/vip.png" alt="" >';
+						html +='</div>';
+						html +='<div class="aui-product-list-text">';
+						html +='<h3 class="aui-product-list-title">积分兑换VIP体验卡</h3>';
+						html +='<div class="aui-product-list-center">';
+						html +='<div>';
+						html +='<span class="aui-product-list-price"><em>¥</em> <span>0</span></span>';
+						html +='<span class="aui-product-list-del-price">¥<span >100</span></span>';
+						html +='</div>';
+					
+						html +='</div>';
+						html +='</div>';
+						html +='</a>';
+						html +='</article>';
+					for(i in ret){     
+						item = ret[i];
+						//html +="<article class='aui-scrollView-list' onclick=\"go_detail('" + item.id +' "')\">";
+						html += "<article class='aui-scrollView-list' onclick=\"go_detail('" + item.id + "')\">";
+						html += "<a  class='aui-scrollView-list-item' >";
+						html +='<div class="aui-product-list-img">';
+						html +='<img  src="' + item.picname + '" alt="" >';
+						html +='</div>';
+						html +='<div class="aui-product-list-text">';
+						html +='<h3 class="aui-product-list-title">' + item.title + '</h3>';
+						html +='<div class="aui-product-list-center">';
+						html +='<div>';
+						html +='<span class="aui-product-list-price"><em>￥</em> <span>' + item.price + '</span></span>';
+						html +='<span class="aui-product-list-price">&nbsp;积分：<span >' + item.fen + '</span></span>';
+						html +='</div>';
+					
+						html +='</div>';
+						html +='</div>';
+						html +='</a>';
+						html +='</article>';
+					}
+
+					 zongyi.innerHTML = html;  
+
+			  
+            } 
+        });
+		
+		}
+		
+		
+  function openWin(){
+	  
+	    if (localStorage.getItem('user_id')<1) {
+
+		  api.toast({
+			msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+			duration: 2000
+		});
+
+
+		   api.openWin({
+			   name: 'login',
+			   url: './login.html',
+			   delay: 2000
+		   });
+		   return;
+		 }
+	  
+		api.openWin({
+			  name: 'jifen_win',
+	          url: 'jifen_win.html',
+			 
+		  });
+	}
+	
+	  function go_detail(id){
+	  
+	  if (localStorage.getItem('user_id')<1) {
+
+		  api.toast({
+			msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+			duration: 2000
+		});
+
+
+		   api.openWin({
+			   name: 'login',
+			   url: './login.html',
+			   delay: 2000
+		   });
+		   return;
+		 }
+	  
+		api.openWin({
+           name: 'duihuan_win',
+           url: './duihuan_win.html',
+           delay: 300,
+           pageParam:{
+           		id:id,
+           		
+           	},
+           //pageParam:{url:dataurl2},
+           bgColor: '#000000'
+       });
+	}
+	
+	
+	</script>
+</html>

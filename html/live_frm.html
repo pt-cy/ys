@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <link rel="stylesheet" href="../css/live.css">
+	
+	
+    <title>title</title>
+
+
+    <script type="text/javascript" src="../script/vue.js" ></script>
+
+</head>
+<body>
+
+  <div id="livetop" class="live-top">
+    <div class="live-top-r" tapmode onclick="closeWin()">
+      <img src="../image/guanbi.png">
+    </div>
+    <div class="live-top-box">
+
+      <img id="pic" class="live-top-box-img" src="../image/tx.png">
+      <div id="name" class="live-top-box-name">
+        nice
+      </div>
+    </div>
+
+  </div>
+  <div id="livebt" class="live-bt">
+  </div>
+  <!--<div id="vue-content">
+      <div id="mengban" style="text-align: center;" :class="giftName">
+          <img src="../image/zs.jpg" alt="" style="width: 50%;margin-top: 70px;"/>
+      </div>
+      <div class="wrap">
+          <ul>
+              <li class="announcement" v-html="announcement"></li>
+          </ul>
+          <div id="message">
+              <ul id="inputUl">
+
+                  <li v-for="item in inputList" class="message-list"> <span class="nickname">{{nickname}} </span>: {{item}}</li>
+
+              </ul>
+          </div>
+      </div>
+
+      <div id="livebtn" style="background:rgba(255,255,255,0.3);">
+          <input id="inputV" v-model="inputValue" type="text"/>
+          <div class="live-bt-r" tapmode onclick="closeWin()">
+              <img src="../image/guanbi.png">
+          </div>
+          <div class="live-btn-m">
+              <div class="m"> <img src="../image/love.png" class="journal-reward" /> </div>
+          </div>
+
+          <div @click="giftClick" class="live-btn-l">
+              <img src="../image/gift.png">
+          </div>
+
+          <div class="live-btn-r"  @click="handelClick">
+              <img src="../image/fasong.png">
+          </div>
+
+      </div>-->
+  </div>
+
+</body>
+
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    apiready = function(){
+
+      api.setStatusBarStyle({
+          style: 'light',
+          color: 'rgba(0,0,0,0)'
+      });
+
+      api.parseTapmode();
+      var pic = $api.byId('pic');
+      var name = $api.byId('name');
+      pic.src = api.pageParam.img;
+      name.innerHTML = api.pageParam.title;
+    }
+
+
+
+    function closeWin(){
+
+      api.closeWin({
+      });
+    }
+
+    function toJubao(){
+      api.toast({
+          msg: '我们已收到您对该房间内容的举报，并推送您的举报信息到运营商和云服务提供商！',
+          duration: 3000,
+          location: 'middle'
+      });
+
+    }
+
+
+</script>
+
+</html>

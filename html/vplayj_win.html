@@ -1,0 +1,408 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+     <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+
+	<style>
+	html,body{font-size:15px;}
+	.xuanli{
+	width: 25%;padding: 1%;text-align: center;float:left;overflow: hidden;
+	}
+	.xuana{
+	display: block;border: 1px solid #dcdcdc;background: #fff;position: relative;color: #666;    border-radius: .133rem;height: 1.833rem;line-height: 1.833rem;
+	}
+	
+	.bg{
+    background-image:url(http://91jean.oss-cn-hangzhou.aliyuncs.com/18-8-31/16567303.jpg);
+    width:100%;
+    height:170px;
+    line-height:170px;
+}
+.bg-blur{
+    float:left;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    -webkit-filter: blur(9px);
+    -moz-filter: blur(9px);
+    -o-filter: blur(9px);
+    -ms-filter: blur(9px);
+    filter:blur(10px);
+}
+.content{
+    
+    color:#555;
+    font-weight:bold;
+}
+.font-content{
+    position:absolute;
+    width:100%;
+    height:170px;
+}
+.texts{
+		width: 100%;
+		overflow: hidden;
+	}
+	.morecon{ 
+		cursor:pointer;
+		font-size:16px; float: left;
+		
+		color: #0096FF;
+		}
+	</style>
+</head>
+<body>
+<header class="aui-navBar aui-navBar-fixed" style="background:linear-gradient(to right,#626ec0 0,#7C15E5 100%);;" id="aui-header">
+                <a  onclick="closeWin()" class="aui-navBar-item"  >
+              <i class="icon icon-back-b"></i>
+                </a>
+                <div class="aui-center">
+                    <span class="aui-center-title"   id="title"  style=" font-size: 1rem; color: #ffffff; ">正在播放</span>
+                </div>
+
+                <a   class="aui-navBar-item" style="color: #725f5f;"  >
+              <i class="icon"></i>
+                </a>
+
+            </header>
+
+		
+		<div>
+		 <div class="bg bg-blur"></div>
+	<section class="content font-content" id="guanggao" style="margin-top:5px;">
+	
+	
+	<div class="vod-n-img" style="position: absolute;float: left;overflow: hidden;width:30%;margin-left:6px;">
+			
+		  <!--顶部横幅未加载完成时的提示-->
+			<img id="bpic" src="http://imgwx3.2345.com/dypcimg/tv/img/f/18/sup54734_223x310.jpg" style="width:100%;height:160px;border:2px solid #ffffff;">
+		  <!--顶部横幅未加载完成时的提示-->
+
+		</div>     
+      <div class="aui-row" id="div_list"  style="float: right;width:68%;">   <!--首页底部图标广告位-->
+		<h1  id="name" style="color:#ffffff;font-size:1.2rem;">优尼视界</h1>
+		<p style="font-size:14px;line-height: 1.55rem;height: 1.5rem;overflow: hidden;color:#ffffff;"><em id="zhuangtai"></em></p>
+		<p style="font-size:14px;line-height: 1.55rem;height: 1.3rem;overflow: hidden;color:#ffffff;"><em id="zhuyan"></em></p>
+		<p style="font-size: 14px;line-height: 1.55rem;height: 1.55rem;overflow: hidden;color:#ffffff;"><em>评分：</em><em  id="pingfen"> </em></p>
+		<p style="font-size: 14px;line-height: 1.55rem;height: 1.55rem;overflow: hidden;color:#ffffff;"><em>年份：</em><em  id="niandai"></em></p>
+	
+		<p style="font-size: 14px;line-height: 1.55rem;height: 1.55rem;overflow: hidden;color:#ffffff;"><em>地区：</em><em  id="quyu"></em></p>
+		</div>
+	
+      </section>
+	</div>
+
+	<div  class="aui-grid aui-margin-b-15" id="checkmore"   style="width:100%;height:auto;margin-top:31px;" >
+		<div class="texts" id="jianjie" >
+			无力维权的修车工遭遇非法强拆后，选择跳楼自杀；随着小刑警孙大圣（王千源 饰）调查的深入，发现这场看似简单的民事纠纷背后其实另有隐情；随着嫌疑目标的锁定，赵泰（包贝尔 饰）和崔京民（王迅 饰）为代表的反派集团被盯上后，公然藐视法律挑衅警察。面对反派集团金钱诱惑、顶头上司的警告劝阻、家人性命遭受威胁，这场力量悬殊的正邪较量将会如何收场……
+		</div>
+	</div>
+	
+
+	<div id="ttu" class="aui-slide-wrap" >
+
+
+				<!--底部横幅未加载完成时的提示-->
+				  <img id="bpic" src="../image/tie.png">
+				<!--底部横幅未加载完成时的提示-->
+	</div>
+
+	
+	
+	<div id="xuanji">
+		
+		</div>
+	
+		
+		
+	     
+	  
+	  
+	  
+	  
+ 
+ </div>
+ 
+ 
+ 
+
+
+
+
+
+
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+
+<script type="text/javascript"> 
+<!-- /* -->
+ <!-- * ========================================================================= -->
+ <!-- *  优尼网络   红桃K  QQ：2529218024  http:// -->
+ <!-- * Verson 1.0 -->
+ <!-- * ========================================================================= -->
+ <!-- */ -->
+ <!-- /*蝶影VIP*/ -->
+
+ $(function(){ 
+	 $('.aui-nav-list-box ul li').click(function(){ 
+		$(this).addClass('aui-current').siblings().removeClass('aui-current'); 
+		 $('.aui-nav-list-tab>div:eq('+$(this).index()+')').show().siblings().hide(); 
+	 }) 
+	
+ }); 
+
+
+
+ </script> 
+
+ <script type="text/javascript">
+      $(document).ready( function() {
+          $("#checkmore .texts").each(function(){
+              height=$(this).height();
+              if(height>50) {
+                  $(this).css("height","50");
+                  $(this).after("<a class=\"morecon\" style=\"float:right;\">查看更多</a>");
+              }
+        });
+         $(".morecon").click(function(){
+             $(this).parent().children(".texts").css("height","auto");
+             $(this).css("display","none");
+         });
+    });
+ </script>
+<script type="text/javascript">
+ var jx1 = localStorage.getItem('jx1');
+      var jx2 = localStorage.getItem('jx2');
+
+  apiready = function(){
+                                
+       var api_url = localStorage.getItem('api_url');
+	   var user_id = localStorage.getItem('user_id');
+	  // alert(user_id);
+
+
+  api.ajax({
+      url: api_url+'/App/Index/config.html',
+      method: 'get',
+      data: {
+          values: {
+              uid: user_id
+          }
+      }
+  },function(ret, err){
+      if (ret) {
+       localStorage.setItem('jx1',ret.jx1);
+        localStorage.setItem('jx2',ret.jx2);
+        localStorage.setItem('jx3',ret.jx3);
+        localStorage.setItem('jx4',ret.jx4);
+        localStorage.setItem('jx5',ret.jx5);
+
+
+         
+      } else {
+
+
+
+      }
+  });
+
+	
+  
+   //toBanners();
+		var name= api.pageParam.name;
+		var arr = name.split("@");
+		var name = arr[0];
+		
+		 var img = $api.byId('bpic');
+			 img.src = arr[1];	
+		 var zhuyan = $api.byId('zhuyan'); 
+		zhuyan.innerHTML = arr[2]; 	 
+		 var zhuangtai = $api.byId('zhuangtai'); 
+		zhuangtai.innerHTML = arr[3]; 	 
+		//$api.html($api.byId('title'),name);
+    api.parseTapmode();
+    var header = $api.byId('aui-header');
+    $api.fixStatusBar(header);
+    var headerPos = $api.offset(header);
+    var body_h = $api.offset($api.dom('body')).h;
+	
+	 var zuixin2 = $api.byId('guanggao');//html容器
+	var zuixin1 = $api.byId('xin');//js
+	 api.ajax({
+	 
+          url: api_url+'/App/Api/bofang',
+        method: 'get',
+		data: { 
+					values: {
+						name: name,
+						
+					}
+				}  
+				  
+    },function(ret, err){
+			var navtjid = $api.byId('xuanji');
+        if (ret.code!=1) {  
+		$api.html($api.byId('title'),ret.name);
+		var name = $api.byId('name');
+		name.innerHTML = ret.name;
+		localStorage.setItem('dtitle',ret.name);
+		 var quyu = $api.byId('quyu'); 
+		  quyu.innerHTML = ret.diqu; 
+		   
+		   var niandai = $api.byId('niandai'); 
+		   niandai.innerHTML = ret.niandai;
+		   var pingfen = $api.byId('pingfen'); 
+			pingfen.innerHTML = ret.fen;
+			var jianjie = $api.byId('jianjie'); 
+			 jianjie.innerHTML = ret.jianjie;
+			var html='';
+			var zm = ret.arr;	
+			//alert(zm);			
+			for(i in zm){
+			item = zm[i];
+		///	alert(item.shuzi);
+			html += '<ul style="padding-top: 1%;width: 100%;padding-bottom: 1%;">';
+			html +='<span style="width:100%;background:linear-gradient(to right,#626ec0 0,#7C15E5 100%);;height:30px;font-size:17px;color:#ffffff;">'+ item.name + '</span>';
+			html +='<br/>';
+			    
+			var ji = item[0];
+			for(i in ji){
+			items = ji[i];
+			html +="<li class='xuanli'><button style='background:linear-gradient(to right,#626ec0 0,#7C15E5 100%);;color:#ffffff;font-size:16px;' onclick=\"toBanners1('"+items.lianjie+"')\">"+items.shuzi+"</button></li>";
+			//alert(items.lianjie);
+			}
+			html +='</ul>';
+			}
+			navtjid.innerHTML = html;
+        }else{
+			alert(ret.msg);
+		} 
+		
+    });   
+	   
+   
+  }
+//
+  function toBanners1(vpl){
+
+  var browser = api.require('webBrowser');
+      browser.openView({
+          url: jx1+vpl,
+          rect: {
+              x: 0,
+              y: 70,
+              w: 'auto',
+              h: 250,
+          }
+      }, function(ret, err) {
+
+          switch (ret.state) {
+              case 0:
+                  break;
+              case 1:
+                  break;
+              case 2:
+                  break;
+              case 3:
+                  break;
+              case 4:
+                  break;
+              default:
+                  break;
+          };
+	
+      });
+	  
+	  var api_url = localStorage.getItem('api_url');
+	   var user_id = localStorage.getItem('user_id');
+	  var dtitle = localStorage.getItem('dtitle');
+	  //alert(vpl)
+	  api.ajax({
+	      url: api_url+'/App/Index/jilu.html',
+		  method: 'get',
+	      data:{
+	      	values:{
+	      		uid: localStorage.getItem('user_id'),
+	      		title: dtitle,
+	      		url: jx1+vpl,
+	      		//time: new Date().format('yyyy-MM-dd hh:mm:ss'),
+	      		//ping: getPing(api.pageParam.srcUrl)
+	      	}
+	      }
+      },function(ret,err){
+	  });
+	  
+	  
+  }
+  
+  
+   function toBanners(video){
+   //alert(video);
+   var dtitle = localStorage.getItem('dtitle');
+				 api.hideProgress();
+					 var systemType = api.systemType;
+					 if (systemType == 'ios') {
+					   api.openWin({
+						   name: 'play_win',
+						   url: './play_win.html',
+						   delay: 300,
+						   pageParam:{
+								url:jx1+video,
+								srcUrl:video,
+								title:dtitle,
+								needRecordHistory: true
+							},
+						   //pageParam:{url:dataurl2},
+						   bgColor: '#000000'
+					   });
+					 }else if (systemType == 'android') {
+					   api.openWin({
+						   name: 'play_win',
+						   url: './play_win.html',
+						   delay: 300,
+						   pageParam:{
+								url:jx1+video,
+								srcUrl:video,
+								title:dtitle,
+								needRecordHistory: true
+							},
+						   //pageParam:{url:dataurl2},
+						   bgColor: '#000000'
+					   });
+					 }else{
+					   var browser = api.require('webBrowser');
+					   browser.open({
+						   url: jx1+video,
+						   titleBar: {
+							 visible: true
+						   }
+					   });
+
+					 }
+
+   
+   }
+
+  
+  
+  
+  
+
+  function closeWin(){
+    api.setScreenOrientation({
+        orientation: 'portrait_up'
+    });
+      api.closeWin({
+      });
+  }
+
+</script>
+
+</html>

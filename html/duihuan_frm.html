@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        入伙
+    </title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="./themes/css/style.css">
+    <style media="screen">
+      #wrap{
+        height: auto;
+        margin-bottom: 80px;
+      }
+
+      .footer{
+        position: fixed;
+        bottom: 10px;
+        left: 100px;
+        right: 100px;
+        height: 50px;
+        line-height: 50px;
+        background-color: #fe798e;
+
+        border-radius: 15px;
+
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .h{
+        width: 100%;
+        float: left;
+        padding: 15px 15px;
+      }
+    </style>
+</head>
+
+<body>
+  <div id="app">
+    <div id="slideBox" class="slideBox">
+        <div class="bd">
+            <ul>
+                <li>
+                    <a class="pic" href="#"><img  src="../image/1.png" alt="" id="pic" style="height:120px;"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="clear"></div>
+
+
+    <div class="xj">
+        <p id="title">11111111111111</p>
+        <p id="fen">￥11111 <span>￥999</span> </p>
+		 <p id="price">￥11111 <span>￥999</span> </p>
+    </div>
+
+
+
+    <div id="wrap">
+        <div class="h" id="con">33333333333333333</div>
+    </div>
+
+  <div class="foot">
+    <div>
+        <a href="#" onclick="goumai();">直接购买</a>
+    </div>
+    <div>
+        <a href="#" onclick="duihuan();">立即兑换</a>
+    </div>
+
+  </div>
+
+
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+  apiready = function() {
+  api.ajax({
+            url: api_url+'/App/Index/shoplist.html',
+            method: 'get',
+			data: {
+					values: {
+						id:api.pageParam.id,
+					}
+				}
+        },function(ret, err){
+            if (ret) {
+					var img = $api.byId('pic');
+					img.src = ret.picname;	
+					var title = $api.byId('title');
+					title.innerHTML =ret.title;
+					var fen = $api.byId('fen');
+					fen.innerHTML ='积分：'+ret.fen;
+					var price = $api.byId('price');
+					price.innerHTML ='￥'+ret.price;
+					var con = $api.byId('con');
+					con.innerHTML =ret.con;
+			jifenbi = ret.fen;
+			jititle = ret.title;
+			price1 = ret.price;
+			   } 
+        });
+	
+  } 
+  
+   var jifenbi = '';
+      var jititle = '';
+   function duihuan(){
+			var dizhi =localStorage.getItem('dizhi');
+			if(dizhi==null){
+			
+			api.toast({
+			msg: '(ｷ｀ﾟДﾟ´)!!    请先完善资料！',
+			duration: 2000
+			});
+
+
+			 api.openWin({
+				 name: 'shezhi_win',
+				 url: './shezhi_win.html',
+				 delay: 2000
+			 });
+			 return;
+			}
+			api.ajax({
+					url: api_url+'/App/Index/exchanges.html',
+					method: 'get',
+					data: {
+						values: {
+							uid: localStorage.getItem('user_id'),
+							share:jifenbi,
+							title:jititle,
+							dizhi:dizhi,
+							name:localStorage.getItem('user_name'),
+						}
+					}
+				},function(ret, err){
+					if (ret) {
+						if (ret.code == 0) {
+						  api.toast({
+							  msg: ret.msg,
+							  duration: 5000
+						  });
+
+						}else {
+						
+						 
+						  api.toast({
+							  msg: '兑换成功',
+							  duration: 10000
+						  });
+
+						}
+
+					} else {
+					  api.hideProgress();
+					  /*
+						alert( '网络错误' );
+						*/
+						api.toast({
+							msg: '网络错误',
+							duration: 5000
+						});
+
+					}
+				});		
+   
+				
+				
+	  }
+  
+  
+  
+   function goumai(){
+			var dizhi =localStorage.getItem('dizhi');
+			if(dizhi==null){
+			
+			api.toast({
+			msg: '(ｷ｀ﾟДﾟ´)!!    请先完善资料！',
+			duration: 2000
+			});
+
+
+			 api.openWin({
+				 name: 'shezhi_win',
+				 url: './shezhi_win.html',
+				 delay: 2000
+			 });
+			 return;
+			}
+			api.ajax({
+					url: api_url+'/App/Index/goumai.html',
+					method: 'get',
+					data: {
+						values: {
+							uid: localStorage.getItem('user_id'),
+							share:price1,
+							title:jititle,
+							dizhi:dizhi,
+							name:localStorage.getItem('user_name'),
+						}
+					}
+				},function(ret, err){
+					if (ret) {
+						if (ret.code == 0) {
+						  api.toast({
+							  msg: ret.msg,
+							  duration: 5000
+						  });
+
+						}else {
+						
+						 
+						  api.toast({
+							  msg: '兑换成功',
+							  duration: 10000
+						  });
+
+						}
+
+					} else {
+					  api.hideProgress();
+					  /*
+						alert( '网络错误' );
+						*/
+						api.toast({
+							msg: '网络错误',
+							duration: 5000
+						});
+
+					}
+				});		
+   
+				
+				
+	  }
+  
+  
+  
+  
+  
+  
+</script>
+
+</html>

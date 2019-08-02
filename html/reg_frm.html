@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style type="text/css">
+	   html,body{
+		font-size:18px;
+	 }
+    	.myui-from {
+		padding-top: 5rem;
+		width: 80%;
+		margin: auto;
+		}
+    </style>
+</head>
+<body class="login-bg2" style="position: fixed;">
+  <header class="aui-bar aui-bar-nav" id="aui-header" style="background-color:rgba(0,0,0,0) !important">
+      <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+          <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div id="title" class="aui-title">注册</div>
+  </header>
+
+
+  <div class="myui-from">
+    <ul class="myui-from-list">
+      <li class="myui-from-list-item">
+        <div class="myui-code">
+          <input id="username" type="tel"  minlength="11" maxlength="11" placeholder="输入账号" class="myui-from-list-item-input">
+          <!--<button id="btn1" type="button" name="button" style="width:20%;float:left;height: 2.2rem; display:none" class="myui-from-code-button" onclick="getCode()">获取</button>-->
+        </div>
+      </li>
+       <!--<li class="myui-from-list-item">
+        <input id="yzcode" type="tel" minlength="6" maxlength="6" placeholder="短信验证码" class="myui-from-list-item-input" style="display:none">
+      </li>-->
+      <li class="myui-from-list-item">
+        <input id="password" type="password" placeholder="设置密码" class="myui-from-list-item-input">
+      </li>
+	    <li class="myui-from-list-item">
+        <input id="password_reg" type="password" placeholder="再输入一次密码" class="myui-from-list-item-input">
+      </li>
+      
+      <li class="myui-from-list-item">
+        <button id="btn2" type="button" name="button" class="myui-from-list-item-button" onclick="toReg()">立即注册</button>
+      </li>
+    </ul>  
+  </div>
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    var api_url = localStorage.getItem('api_url');
+    var onoff = true;
+    var code_data = '';
+    var user = '';
+    var pass = '';
+	var pass02 = '';
+    apiready = function () {
+      api.parseTapmode();
+      var header = $api.byId('aui-header');
+      $api.fixStatusBar(header);
+      var headerPos = $api.offset(header);
+      var body_h = $api.offset($api.dom('body')).h;
+
+    }
+
+
+    //注册
+    function toReg(){
+      var username = $api.val($api.byId('username'));
+      var password = $api.val($api.byId('password'));
+	  var password_reg = $api.val($api.byId('password_reg'));
+      var yzcode = $api.val($api.byId('yzcode'));
+      var share = $api.val($api.byId('share'));
+      if(username == ''){
+        api.alert({
+            title: '警告！',
+            msg: '请输入登录账号',
+        });
+        return;
+      }
+      if(password == '' || password_reg == ''){
+        api.alert({
+            title: '警告！',
+            msg: '请输入密码',
+        });
+        return;
+      }
+
+       //if(share == ''){
+        // api.alert({
+        //     title: '警告！',
+        //     msg: '请输入邀请码',
+        // });
+        // return;
+       //}
+      if(username.length < 6){
+        api.alert({
+            title: '警告！',
+            msg: '请输入6位以上账号',
+        });
+        return;
+      }
+
+	  if ($api.byId('password').value != $api.byId('password_reg').value) {
+                $api.byId('password_reg').focus();
+                api.toast({
+                    msg : '两次密码不一致，请重新输入!'
+                });
+                return;
+                 }
+
+      user = $api.val($api.byId('username'));
+      pass = $api.val($api.byId('password'));
+	  pass02 = $api.val($api.byId('password_reg'));
+      api.showProgress({
+          title: '注册中...',
+          text: '请稍等...',
+          modal: false
+      });
+      api.ajax({
+           url: api_url+'/App/Index/reg.html',
+          method: 'get',
+          data: {
+              values: {
+                  name: username,
+                  password:password,
+			
+				  uuid: api.deviceId
+				  
+              }
+          }
+      },function(ret, err){
+      	//alert(ret)
+          if (ret) {
+              if (ret.code == 0) {
+                api.hideProgress();
+                api.alert({
+                    title: '错误~',
+                    msg: ret.msg,
+                });
+              }else {
+
+                api.hideProgress();
+                api.alert({
+                    title: '注册成功！',
+                    msg: '当前身份：体验会员',
+                });
+               
+                 api.closeWin({
+                    name: 'login'
+                });  
+				
+				  localStorage.setItem('user_id',ret.id);
+                  localStorage.setItem('user_name',ret.name);
+                  localStorage.setItem('pass',ret.pass);
+                  localStorage.setItem('viptime',ret.viptime);
+				  localStorage.setItem('mim',ret.mim);
+				  localStorage.setItem('jifen',ret.jifen);
+                  localStorage.setItem('price',ret.price);
+				  localStorage.setItem('money',ret.money);
+				localStorage.setItem('tuan2',ret.msg['tuan2']);
+					api.sendEvent({
+                            name: 'newLoingdata',
+                            extra: {
+                            }
+                          });
+
+
+                          api.hideProgress();
+						  
+						  api.closeWin();
+						  
+              }
+          } else {
+            api.hideProgress();
+            api.alert({
+                title: '糟糕~',
+                msg: '网络错误！',
+            });
+          }
+      });
+    }
+
+    //页面传参
+    function openLogin(){
+        var delay = 0;
+        if(api.systemType != 'ios'){
+            delay = 300;
+        }
+
+
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+            pageParam:{user:user,pass:pass},
+        });
+    }
+
+   
+
+
+    function closeWin(){
+        api.closeWin({
+        });
+    }
+
+    function openWin(name){
+          var delay = 0;
+          if(api.systemType != 'ios'){
+              delay = 300;
+          }
+          api.openWin({
+              name: ''+name+'',
+              url: ''+name+'.html',
+              bounces:false,
+              delay: delay,
+              slidBackEnabled:true,
+              vScrollBarEnabled:false
+          });
+      }
+</script>
+</html>

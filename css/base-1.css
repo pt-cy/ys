@@ -1,0 +1,312 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+	max-width: 100%;
+	width: 100%;
+	display: block;
+}
+ul, ol {
+    list-style: none;
+}
+input,button{
+    outline-style: none;
+}
+img {
+    border: 0;
+    vertical-align: middle;
+}
+a {
+    text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+em ,i{
+    color: #fff;
+    font-size: .5rem;
+    padding-right: 1.2rem;
+    background-size: 1.23rem 1.23rem;
+}
+body{
+    background: #383b60;
+    padding-top: .8rem;
+}
+
+.search{
+    margin: 0 .6rem;
+    height: 1.36rem;
+    background: url(../images/search.png) no-repeat right center;
+    background-size: 1.36rem 1.36rem;
+}
+.head{
+     /* height: 7.38rem; */
+    background: url(../images/head.png) no-repeat top center;
+    background-size: 100% 100%;
+    padding: 1.5rem;
+    position: relative;
+    z-index: 999;
+}
+.head .user{
+    overflow: hidden;
+}
+.head .user img{
+    float: left;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.head .user h3{
+    float: left;
+    line-height: 1.5rem;
+    color: #fff;
+    font-size: .5rem;
+    padding-right: 1.2rem;
+    background-size: 1.23rem 1.23rem;
+    margin-left: .5rem;
+}
+.head .user span{
+    float: right;
+    background-image: linear-gradient( 0deg, rgb(230,185,113) 0%, rgb(231,208,135) 100%);
+    /*box-shadow: 0px 10px 62px 0px rgba(210, 169, 103, 0.71);*/
+    padding: 0 .3rem;
+    line-height: 1rem;
+    border-radius: .5rem;
+    font-size: .6rem;
+    color: #fff;
+    margin: .25rem 0;
+}
+.head ul{
+    overflow: hidden;
+}
+.head ul li{
+    float: left;
+    padding: .5rem 0;
+}
+.head ul li:first-child{
+    float: left;
+}
+.head ul li:last-child{
+    float: right;
+}
+.head ul li img{
+    float: left;
+    width: .5rem;
+    height: .5rem;
+}
+.head ul li p{
+    float: left;
+    font-size: .4rem;
+    color: #a3a3a3;
+    margin-left: .2rem;
+    line-height: .5rem;
+}
+.head ul li span{
+    float: left;
+    font-size: .4rem;
+    color: #fff;
+    margin-left: .2rem;
+    line-height: .5rem;
+}
+.btn{
+    overflow: hidden;
+    padding: 0 .6rem;
+}
+.btn a{
+    float: left;
+    width: 33.33%;
+}
+.btn a img{
+    display: block;
+    margin: 0 auto;
+    width: 1rem;
+}
+.btn a p{
+    text-align: center;
+    color: #fff;
+    font-size: .4rem;
+    margin-top: .5rem;
+}
+.nav{
+    padding: .5rem .6rem;
+}
+.nav a{
+    overflow: hidden;
+    display: block;
+    background: url(../images/r.png) no-repeat right center;
+    background-size: .3rem;
+    padding-right: .8rem;
+}
+.nav img{
+    float: left;
+    width: .5rem;
+    margin: .5rem 0;
+    margin-right: .4rem;
+}
+.nav p{
+    float: left;
+    font-size: .5rem;
+    color: #fffffe;
+    line-height: 1.5rem;
+}
+.nav span{
+    float: right;
+    line-height: 1.4rem;
+    font-size: .4rem;
+    color: #999;
+}
+
+
+
+
+
+.title{
+    overflow: hidden;
+    padding: 0 1rem;
+}
+.title a:first-child{
+    float: left;
+    color: #fff;
+    font-size: .5rem;
+    color: #fff;
+    background: url(../images/l.png) no-repeat left center;
+    background-size: .4rem;
+    padding-left: 1rem;
+    float: left;
+}
+.title a:last-child{
+    float: left;
+    color: #fff;
+    font-size: .5rem;
+    color: #fff;
+    float: right;
+}
+.tab{
+    background: #fff;
+    border-radius: .3rem .3rem 0 0;
+    margin-top: -2rem;
+    padding-top: 2rem;
+    overflow: hidden;
+}
+.tab ol{
+    border-bottom: 1px solid #f4f4f4;
+    padding: 0 2.6rem;
+    display: flex;
+    justify-content: space-between;
+}
+.tab ol li{
+    width: 1.9rem;
+    overflow: hidden;
+    color: #343338;
+}
+.tab ol li.on{
+    border-bottom: .2rem solid #dfd58c;
+    color: #dfd58c;
+}
+.tab ol li img{
+    float: left;
+    width: .66rem;
+    margin: .32rem 0;
+}
+.tab ol li p{
+    float: left;
+    font-size: .4rem;
+    margin-left: .2rem;
+    line-height: 1.4rem;
+}
+.tab ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 .8rem;
+    display: none;
+}
+.tab ul.on{
+    display: flex;
+}
+.tab ul li{
+    float: left;
+    width: 5.4rem;
+    text-align: center;
+    border: 1px solid #efefef;
+    border-radius: .2rem;
+    margin-top: .5rem;
+    padding: .6rem 0 1rem 0;
+}
+.tab ul li.on{
+    background: #fcf7f1;
+    border: 1px solid #dad28d;
+}
+.tab ul li h3{
+    font-size: .4rem;
+    color: #545454;
+}
+.tab ul li p{
+    font-size: .6rem;
+    color: #ea6382;
+    margin-top: .3rem;
+    font-weight: bold;
+}
+.tab button{
+    width: 10.5rem;
+    height: 1.4rem;
+    border-radius: .2rem;
+    display: block;
+    margin: .6rem auto;
+    background-image: linear-gradient(to left,#e4b871,#e6d087);
+    box-shadow: 0 0 10px #e6d087;
+    color: #fff;
+    font-size: .5rem;
+    border: 0;
+}
+.footer{
+    background: #fff;
+    padding-top: .5rem;
+    overflow: hidden;
+}
+.footer h3{
+    text-align: center;
+    font-size: .4rem;
+    color: #8c8c8e;
+    position: relative;
+}
+.footer h3::after{
+    content: "";
+    width: 1rem;
+    height: 2px;
+    background: #8c8c8e;
+    left: 50%;
+    margin-left: -2.5rem;
+    top: 50%;
+    margin-top: -1px;
+    position: absolute;
+}
+.footer h3::before{
+    content: "";
+    width: 1rem;
+    height: 2px;
+    background: #8c8c8e;
+    right: 50%;
+    margin-right: -2.5rem;
+    top: 50%;
+    margin-top: -1px;
+    position: absolute;
+}
+.footer a{
+    float: left;
+    width: 25%;
+    padding: .6rem 0;
+}
+.footer a img{
+    width: 2rem;
+    display: block;
+    margin: 0 auto;
+}
+.footer a p{
+    text-align: center;
+    font-size: .4rem;
+    color: #212026;
+    margin-top: .5rem;
+}
+.head ul li a{ overflow:hidden; display:block}

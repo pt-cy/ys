@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html style="font-size: 50px;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>推广</title>
+    <link rel="stylesheet" type="text/css" href="../css/myui.css" />
+    <style type="text/css">
+    	.STYLE1 {
+	color: #FFFFFF;
+	font-weight: bold;
+	font-size: 16px;
+}
+    </style>
+</head>
+<body style="background-color:#fff">
+	<!--
+   <img src="../image/baiwan.png" onclick="yqr()">
+   <table width="100%" border="1" cellpadding="0" cellspacing="0" bordercolor="FF5B5C" bgcolor="#FFFFFF">
+  <tr>
+    <td bgcolor="#FF5B5C"><iframe src="http://way.63nm.cn/shuju" width="100%" height=150 marginheight="0" marginwidth="0" frameborder="0" scrolling="no"></iframe></td>
+  </tr>
+  <!--<tr>
+    <td bgcolor="#000"><div align="center"><span class="STYLE1">&nbsp;&nbsp;全民视界APP视频介绍（点击即可播放）</span></div></td>
+  </tr>
+  <tr>-->
+    <!--<td><video width="100%" src="https://cloud.video.taobao.com//play/u/256126368/p/1/e/6/t/1/218390518417.mp4" controls="controls" autoplay="autoplay" loop="loop" poster="https://img.alicdn.com/imgextra/i3/256126368/O1CN01g4JN3D1wuad8R8I8n_!!256126368.jpg">
+视频
+</video></td>
+  </tr>
+</table>-->
+
+		<a >
+			<img src="../image/hb/4-1.jpg" alt="">
+			
+		</a>
+
+
+<div class="sp-content">
+
+    <div class="bigImg">
+      <div class="getVip">
+		<!--<button onclick="erweima()">获取推广二维码</button>-->        
+			<button onclick="Schb1()" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);">生成推广海报</button>
+			
+			<button onclick="copySet()" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);">复制邀请链接</button>
+		</div>
+    </div>
+
+    <div class="rule">
+    	<!--<h3><p>邀请规则</p></h3>-->
+			
+			
+  		<div style="height:5px;width:100%;background:#F8F8FF;">	</div> 
+			</br>
+			
+  			<a >
+				<img src="../image/hb/5.png" alt="">			
+			</a>
+			<div class="br"></div>
+			</br>
+			
+<div class="br"></div>
+    		
+    	<div id="slidebox" class="aui-slide-wrap" style="background: #282828;margin: 1px;border-radius:0.15rem;box-shadow:0rem 0rem 0.3rem rgba(20, 20, 20, 1.3);"> 
+    		<ul>
+    			
+<div class="br"></div></br>
+
+    			<div style="margin: 10px;border-radius:0.15rem;box-shadow:0rem 0rem 0.5rem rgba(90, 90, 90, 1.5);">
+    				<span> <font color="#FFF"><h4>一：注册送体验,签到送积分，好礼换不停！</h4></font> </span>
+    				<div class="br"></div>
+    			
+    			</br>	
+    				<span> <font color="#FF0000">1.用户注册成功！</font> </span>
+    				<div class="br"></div>
+    				<span> <font color="#FF0000">2.会员自己可获得3天体验！</font> </span>
+    				<div class="br"></div>
+    				<span> <font color="#FF0000">3.分享好友也能赚取积分哦！</font> </span>
+    				<div class="br"></div>    				
+    			</br>    			
+    			</div>
+    			
+    			
+    			<div style="margin: 10px;border-radius:0.15rem;box-shadow:0rem 0rem 0.5rem rgba(90, 90, 90, 1.5);">  
+    				<span> <font color="#FFF"><h4>二：锁粉！</h4></font> </span>
+    				<div class="br"></div>
+    			</br>	
+    				<span> <font color="#FF0000">1.分享链接或海报，好友使用你的链接完成注册，即成为你的下线！</font> </span>
+    				<div class="br"></div>
+    				<span> <font color="#FF0000">2.邀请数据，实时呈现！</font> </span>
+    				<div class="br"></div>    				
+    				<span> <font color="#FF0000">3.抢先锁粉，占领下线市场，一劳永逸，实现躺赚，无限放大！</font> </span>
+    				<div class="br"></div>
+    			</br>    				    			
+                </div>
+                
+    			<div style="margin: 10px;border-radius:0.15rem;box-shadow:0rem 0rem 0.5rem rgba(90, 90, 90, 1.5);">  
+    				<span> <font color="#FFF"><h4>三：推广奖励！</h4></font> </span>
+    				<div class="br"></div>
+    			</br>	
+    				<span> <font color="#FF0000">1.五级分销，每级返利50％！</font> </span>
+    				<div class="br"></div>
+    				<span> <font color="#FF0000">2.现金收益，随时结算！</font> </span>
+    				<div class="br"></div>
+    			</br>    				    			
+                </div>
+                
+</br></br></br>
+                
+    		</ul>
+    	</div>
+    	
+    	
+		
+  	</div>
+
+
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+  var api_url = localStorage.getItem('api_url');
+  var copy = '';
+  var shama = '';
+
+  apiready = function(){
+
+  
+  }
+
+
+ function erweima(){
+ api.showProgress({
+        title: '加载中...',
+        text: '请稍等...',
+        modal: false
+    });
+		
+  api.ajax({
+        url: api_url+'/App/Index/config.html',
+        method: 'get'
+    },function(ret, err){
+		if (ret) {
+		  localStorage.setItem('xiazaiurl',ret.xiazai);
+				var dialogBox = api.require('dialogBox');
+				dialogBox.webView({
+					tapClose: false,
+					path: 'http://qr.topscan.com/api.php?&text='+ret.xiazai,
+					texts: {
+						title: '下载二维码',
+						leftBtnTitle: '关闭',
+						rightBtnTitle: '分享'
+					},
+					styles: {
+						bg: '#fff',
+						corner: 5,
+						w: 300,
+						h: 380,
+						title: {
+							h: 44,
+							size: 14,
+							color: '#000'
+						},
+						upDividingLine: {
+							width: 0.2,
+							color: '#696969'
+						},
+						webView: {
+							h: 300,
+							bg: '#fff',
+						},
+						downDividingLine: {
+							width: 0.2,
+							color: '#696969'
+						},
+						left: {
+							bg: 'rgba(0,0,0,0)',
+							color: '#007FFF',
+							size: 12
+						},
+						right: {
+							bg: 'rgba(0,0,0,0)',
+							color: '#007FFF',
+							size: 12
+						}
+					}
+				}, function(ret) {
+					if (ret.eventType == 'left') {
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+							dialogName: 'webView'
+						});
+					}else {
+
+					  alert('请截屏后分享');
+					}
+				});
+				
+			api.hideProgress();
+		} 
+	});
+  }
+  
+//////////二维码 //////////
+
+
+
+//////////复制分享链接 //////////
+  function copySet(){
+  api.showProgress({
+        title: '加载中...',
+        text: '请稍等...',
+        modal: false
+    });
+    api.ajax({
+        url: api_url+'/App/Index/config.html',
+        method: 'get'
+    },function(ret, err){
+
+
+		if (ret) {
+		
+			var id = localStorage.getItem('user_id');
+			var clipBoard = api.require('clipBoard');
+		  clipBoard.set({
+			  value: '【蝶影VIP】全网VIP视频免费看，高清无广告，再也不用充值会员啦！记得绑定我的邀请：'+ id +'  免费领会员！APP下载地址：'+ret.xiazai
+		  }, function(ret, err) {
+			  if (ret) {
+				api.toast({
+					msg: '已复制到剪切板',
+					duration: 2000
+				});
+  
+			  } else {
+
+			  }
+		  });
+		   api.hideProgress();
+		} 
+    });
+
+
+  }
+//////////复制分享链接 //////////
+function Schb1(){
+
+  api.openWin({
+      name: 'schb1',
+      url: './schb1.html',
+      delay: 100,
+      pageParam:{url:copy},
+      bgColor: 'rgba(0,0,0,0)'
+  });
+
+}
+
+
+  function openWin(name){
+        var delay = 0;
+        if(api.systemType != 'ios'){
+            delay = 300;
+        }
+        api.openWin({
+            name: ''+name+'',
+            url: ''+name+'.html',
+            bounces:false,
+            delay: delay,
+            slidBackEnabled:true,
+            vScrollBarEnabled:false
+        });
+    }
+</script>
+</html>

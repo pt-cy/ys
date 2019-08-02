@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>云API</title>
+   <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/aui.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/auislide.css" />
+	  <link rel="stylesheet" type="text/css" href="../css/iconfont.css"/>
+    <style>
+	html,body{
+		color:#000;
+	}
+       .aui-nav-list-box ul li a {
+    color: #8B8386;
+}
+.guanggao ul li a {   
+    color: #8B8386;
+}
+
+ .guanggao{
+	margin-top:10px;
+	
+}
+.guanggao ul{
+		display: -webkit-box;	display: -webkit-flex;	display: flex;
+	}
+
+.guanggao ul li {
+	float: left;
+    color: #000;
+    cursor: pointer;
+    line-height: 30px;
+	flex: 1;
+    text-align: center;
+    font-size: 14px;
+
+
+}
+
+
+<!-- .aui-nav-list-box ul .aui-current { -->
+    <!-- color: #282828; -->
+    <!-- border-bottom: solid 2px #282828; -->
+    <!-- font-weight: bold; -->
+<!-- } -->
+
+<!-- .aui-nav-list-box ul .aui-current a { -->
+    <!-- color: #282828; -->
+<!-- } -->
+.aui-nav-list-item {
+    display: none;
+}
+.slidebox{
+	height:200px;
+}
+.guanggao img {
+    border-radius: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0 auto;
+}
+
+
+
+  
+
+
+#notice_active{
+    float: left;
+    width: 80%;
+    height: 1.5rem;
+    padding: 0;
+    overflow: hidden;
+    position: relative;
+	font-size:14px;
+	color:black;
+}
+.notice_active_ch{
+	list-style-type: none;
+    line-height: 1.5rem;
+    overflow: hidden;
+}
+
+    </style>
+</head>
+<body>
+	<div class="aui-searchbar" id="search" style="background-color:#fff;">
+							    <div class="aui-searchbar-input aui-border-radius"style="border:1px solid #7A7A7A;" >
+							        <i class="aui-iconfont aui-icon-search"></i>
+
+							            <input type="text" placeholder="输入影片关键词搜索,播放速度更快" id="ff-wd" >
+
+							    </div>
+							    <div class="aui-btn aui-btn-info aui-btn-block" tapmode onclick="ss()" style="width:60px;height:30px;line-height:30px;margin-right:9px;background:#7C15E5;">搜索</div>
+							</div>
+			<div id="aui-slide" class="fx-box">
+				<div id="slidebox" class="aui-slide-wrap" >
+                <!--顶部横幅未加载完成时的提示-->
+                  <img id="bpic" src="../image/TV.png">
+				  
+                <!--顶部横幅未加载完成时的提示-->
+			    </div>
+				
+				<div class="aui-slide-page-wrap"><!--分页容器--></div>
+		  </div>
+			 <div class="gonggao">
+                <div class="list-title-l">
+                  <i class="iconfont icon-xitonggonggao" style="color:#EE4000;font-size:1rem"></i>
+                </div>
+                <div class="gonggao-r" id="notice_active">
+				<ul id="gong">
+				<li class="notice_active_ch" >
+                  <span id="gonggao" style="color:#cdcbcb;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  <li class="notice_active_ch">
+                  <span id="gonggao" style="color:#cdcbcb;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  <li class="notice_active_ch">
+                  <span id="gonggao" style="color:#cdcbcb;font-size: 0.65rem;margin-left: 10px;">蝶影VIP全新体验，全网会员视频任性看</span>
+				  
+				  </li>
+				  </ul>
+                </div>
+              </div>
+		
+			
+
+					  <div class="list-title" style="border-bottom: 0px solid #efefef;">
+						<div class="list-title-l">
+						  <span style="color:#444;font-size:17px;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;;"><i class="iconfont icon-zuirehotchunse" style="color:#ff7600;font-size: 0.8rem;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;"></i>热播电视剧</span>
+						 
+						</div>
+						
+					  </div>
+		<div class="v-list-wrap" id="liveList" style="background:#fff;">
+		
+			<ul class="clearfix" id="dianshiju">
+			
+			11
+	
+			</ul>
+			<p><div class="aui-btn-tuichu aui-btn-block" style="height: 1.5rem;line-height: 1.55rem;background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);border-radius:0rem;" tapmode onclick="chaju()">查看更多</div></p>
+			</div>
+		
+		
+		
+		<div style="height:5px;width:100%;background:#F8F8FF;"></div>
+		<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:17px;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;;"><i class="iconfont icon-zuirehotchunse" style="color:#ff7600;font-size: 0.8rem;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;"></i>电影推荐</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="liveList">
+		
+			<ul class="clearfix" id="dianying">
+				22
+			</ul>
+			<p><div class="aui-btn-tuichu aui-btn-block" style="height: 1.5rem;line-height: 1.55rem;background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);border-radius:0rem;" tapmode onclick="chadian()">查看更多</div></p>
+		</div>
+		
+		
+		
+		
+		<div style="height:5px;width:100%;background:#F8F8FF;"></div>
+		<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:17px;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;;"><i class="iconfont icon-zuirehotchunse" style="color:#ff7600;font-size: 0.8rem;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;"></i>精彩综艺</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="liveList">
+		
+			<ul class="clearfix" id="zongyi">
+			
+	33
+						</ul>
+						<p><div class="aui-btn-tuichu aui-btn-block" style="height: 1.5rem;line-height: 1.55rem;background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);border-radius:0rem;" tapmode onclick="chazong()">查看更多</div></p>
+			</div>
+		
+		
+		
+			<div style="height:5px;width:100%;background:#F8F8FF;"></div>
+		<div class="list-title"  style="border-bottom:0px solid #efefef;">
+					<div class="list-title-l">
+					  <span style="color:#444;font-size:17px;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;;"><i class="iconfont icon-zuirehotchunse" style="color:#ff7600;font-size: 0.8rem;background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;"></i>人气动漫</span>
+					</div>
+					
+			 </div>
+		<div class="v-list-wrap" id="liveList">
+		
+			<ul class="clearfix" id="dongman">
+			44
+	
+			</ul>
+			<p><div class="aui-btn-tuichu aui-btn-block" style="height: 1.5rem;line-height: 1.55rem;background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);border-radius:0rem;" tapmode onclick="chaman()">查看更多</div></p>
+			
+			
+			</div>
+		
+		
+		
+		
+		
+		</div>
+	
+	
+	
+	
+	
+	
+	
+</body>
+
+<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+	function timer(opj){
+		$(opj).find('ul').animate({
+			marginTop : "0rem"  
+			},500,function(){  
+			$(this).css({marginTop : "0rem"}).find("li:first").appendTo(this);  
+		})  
+	}
+	$(function(){ 
+		var num = $('#notice_active').find('li').length;
+		if(num > 1){
+		   var time=setInterval('timer("#notice_active")',5000);
+			$('.gg_more a').mousemove(function(){
+				clearInterval(time);
+			}).mouseout(function(){
+				time = setInterval('timer("#notice_active")',5000);
+			}); 
+		}
+		
+		$(".news_ck").click(function(){
+			location.href = $("#notice_active .notice_active_ch").children(":input").val();
+		})
+	});
+</script>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/doT.js"></script>
+<script type="text/javascript" src="../script/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="../script/jquery.masonry.min.js"></script>
+<script type="text/javascript" src="../script/auipullrefresh.js"></script>
+<script type="text/javascript" src="../script/auislide.js"></script>
+<script type="text/javascript" src="../script/auilazyload.js" ></script>
+
+
+
+<script type="text/javascript">
+
+	
+	
+		
+ var api_url = localStorage.getItem('api_url');
+	apiready = function(){
+	
+	api.ajax({
+    url: api_url+'/App/Index/tanchuang',
+    method: 'get',
+    },function(ret, err){
+        if (ret) {
+          //渲染模板
+         // alert( JSON.stringify(ret.msg['title']) );
+		 if(ret.msg['kai'] == 1 ){
+            var tcurl = ret.msg['url'];
+            api.confirm({
+              title : ret.msg['title'] ,
+              msg   : ret.msg['nei'],
+              buttons : ['去看看', '知道了']
+            },function(ret, err){
+              if (ret.buttonIndex == 1) {
+                if (api.systemType == "android") {
+                  toBanner(tcurl);
+                }
+                if (api.systemType == "ios") {
+                  toBanner(tcurl);
+                }
+              }
+            });
+         }
+			
+			
+        }
+
+    });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	dianshiju();
+	dianying();
+	zongyi();
+	dongman();
+
+	getBanner();
+	gong();
+	tvtu();
+	
+	api.setCustomRefreshHeaderInfo({
+              bgColor : '#fff',
+          }, function() {
+              //下拉刷新被触发，自动进入加载状态，使用 api.refreshHeaderLoadDone() 手动结束加载中状态
+	getBanner();
+			  dianshiju();
+			dianying();
+			zongyi();
+			dongman();
+		
+			shuaxin();	 
+	tvtu();			
+              setTimeout(function(){
+					api.refreshHeaderLoadDone()
+              }, 3000);
+          });
+	
+	}
+
+  function shuaxin(){
+	  
+		api.ajax({
+            url: api_url+'/App/Index/shuaxin.html',
+            method: 'get',
+            data: {
+                values: {
+                 
+                    uid:localStorage.getItem('user_id'),
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+               
+                  localStorage.setItem('user_id',ret.id);
+                  localStorage.setItem('user_name',ret.name);
+                  localStorage.setItem('pass',ret.pass);
+                  localStorage.setItem('viptime',ret.viptime);
+				  localStorage.setItem('mim',ret.mim);
+				  localStorage.setItem('jifen',ret.jifen);
+                  localStorage.setItem('price',ret.price);
+				  localStorage.setItem('money',ret.money);
+
+			  
+            } 
+        });
+
+	  }	
+		 
+function getBanner(){
+  var bannerid = $api.byId('slidebox');
+  var bannertpl = $api.byId('bannertpl');
+  var ttus = $api.byId('ttu');
+  api.ajax({
+      url: api_url+'/App/Index/zlun.html',
+      method: 'get',
+  },function(ret, err){
+      if (ret) {
+		var html='';
+		
+		var banner = ret.slun;
+		for(i in banner){
+			item = banner[i];    
+			html += "<div class='aui-slide-node bg-dark'  tapmode  onclick=\"toBanner('" + item.link + "')\">";
+			html += '<img src="' +item.picname+ '" >';
+			html += '</div>';
+			}
+		bannerid.innerHTML = html;
+	    
+        banNer(); 
+      }        
+  });
+}	
+
+
+
+
+	
+
+
+
+	
+
+	
+	
+	
+	
+	
+  function toBanner(url){
+
+    if (url == '') {
+
+
+      api.toast({
+          msg: '暂无详情'
+      });
+
+    }else {
+
+
+      //网络连接判断S
+
+
+                          api.ajax({
+                             url: api_url+'/App/Index/config.html',
+                              method: 'get'
+                          },function(ret, err){
+                              if (ret) {
+
+                                           api.toast({
+                                               msg: '加载中'
+                                           });
+
+
+
+                                                 api.openWin({
+                                                     name: 'h5',
+                                                     url: './h5.html',
+                                                     pageParam: {
+                                                         url: url
+                                                     }
+                                                 });
+
+
+
+
+                              } else {
+
+                                          //网络连接失败 进行提示
+                                        //  NetworkConnectionFailurePrompt();
+
+                                                api.toast({
+                                                    msg: '请检查网络是否畅通'
+                                                });
+            }
+
+
+        });
+  //网络连接判断E
+
+    }
+  }	
+	
+	function gong(){
+	 var dianshiju = $api.byId('gong');//html容器
+			  api.ajax({
+				url: api_url+'/App/Index/gong.html',
+			  method: 'get',
+		  },function(ret, err){
+			  if (ret) {
+			   var html='';
+			  
+				for(i in ret){
+				
+					item = ret[i];
+					
+					html +="<li class='notice_active_ch' onclick=\"toBanner('" + item.link + "')\">";
+					html +='<span  style="background: linear-gradient(to right,#626ec0,#7C15E5);-webkit-background-clip: text;color: transparent;font-style:normal;font-weight:bold;">'+ item.neirong+'</span>' ;			
+					html +='</li>';
+					 
+				}
+				
+				dianshiju.innerHTML = html;
+				
+				
+				
+			  }
+		  });
+	}
+	
+function openWind(name) {
+//alert(name);
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+		var moshi = localStorage.getItem('moshi');
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+		if(moshi==1){
+		var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'vplayd_win',
+					url: 'vplayd_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						name: name
+					}
+				});
+		}else{
+		 if (time>timestamp || time == -1) {
+				var delay = 0;
+				if(api.systemType != 'ios') {
+					delay = 300;
+				}
+				api.openWin({
+					name: 'vplayd_win',
+					url: 'vplayd_win.html',
+					bounces: false,
+					delay: delay,
+					slidBackEnabled: true,
+					vScrollBarEnabled: false,
+					pageParam: {
+						name: name
+					}
+				});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		
+		}
+		
+	
+	}
+	
+	function openWinj(name) {
+	//alert(name)
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var moshi = localStorage.getItem('moshi');
+		var timestamp = Date.parse(new Date())/1000;
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+		
+		
+		if(moshi==1){
+		
+		var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'vplayj_win',
+				url: 'vplayj_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				pageParam: {
+					name: name
+				}
+			});
+		
+		}else{
+		
+			 if (time>timestamp || time == -1) {
+		
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'vplayj_win',
+				url: 'vplayj_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				pageParam: {
+					name: name
+				}
+			});
+			}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		
+		}
+		
+			
+			
+	}
+
+	function openWinm(name,img,zhuyan,zhuangtai) {
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+		var moshi = localStorage.getItem('moshi');
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			} 
+		
+		
+		
+		if(moshi==1){
+		var delay = 0;
+		if(api.systemType != 'ios') {
+			delay = 300;
+		}
+		api.openWin({
+			name: 'vplaym_win',
+			url: 'vplaym_win.html',
+			bounces: false,
+			delay: delay,
+			slidBackEnabled: true,
+			vScrollBarEnabled: false,
+			pageParam: {
+				name: name,
+				img:img,
+				zhuyan:zhuyan,
+				zhuangtai:zhuangtai
+			}
+		}); 
+		
+		}else{
+		 if (time>timestamp || time == -1) {
+		var delay = 0;
+		if(api.systemType != 'ios') {
+			delay = 300;
+		}
+		api.openWin({
+			name: 'vplaym_win',
+			url: 'vplaym_win.html',
+			bounces: false,
+			delay: delay,
+			slidBackEnabled: true,
+			vScrollBarEnabled: false,
+			pageParam: {
+				name: name,
+				img:img,
+				zhuyan:zhuyan,
+				zhuangtai:zhuangtai
+			}
+		}); 
+		
+		}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+		}	
+			
+	}
+	
+	
+	function openWinz(name,img,zhuyan,zhuangtai) {
+var moshi = localStorage.getItem('moshi');
+		var time = localStorage.getItem('viptime');
+		var user_id = localStorage.getItem('user_id');
+		var username = localStorage.getItem('user_name');
+		var timestamp = Date.parse(new Date())/1000;
+			if(user_id<1){
+			  api.toast({
+				  msg: '(ｷ｀ﾟДﾟ´)!!    你还没登陆！',
+				  duration: 2000
+			  });
+			  api.openWin({
+				  name: 'login',
+				  url: './login.html',
+				  delay: 2000
+			  });
+			  return;
+
+			}
+		
+		if(moshi==1){
+		var delay = 0;
+		if(api.systemType != 'ios') {
+			delay = 300;
+		}
+		api.openWin({
+			name: 'vplayz_win',
+			url: 'vplayz_win.html',
+			bounces: false,
+			delay: delay,
+			slidBackEnabled: true,
+			vScrollBarEnabled: false,
+			pageParam: {
+				name: name,
+				img:img,
+				zhuyan:zhuyan,
+				zhuangtai:zhuangtai
+			}
+		}); 
+		}else{
+		
+		 if (time>timestamp || time == -1) {
+		var delay = 0;
+		if(api.systemType != 'ios') {
+			delay = 300;
+		}
+		api.openWin({
+			name: 'vplayz_win',
+			url: 'vplayz_win.html',
+			bounces: false,
+			delay: delay,
+			slidBackEnabled: true,
+			vScrollBarEnabled: false,
+			pageParam: {
+				name: name,
+				img:img,
+				zhuyan:zhuyan,
+				zhuangtai:zhuangtai
+			}
+		}); 
+		
+		}else if (time<timestamp){
+                  VipExpiredHint();   //会员过期弹窗提示
+			}
+			
+			}
+	}
+	
+	
+	function VipExpiredHint() {
+
+                  /*会员过期弹窗提示*/
+                  var dialogBox = api.require('dialogBox');
+                  dialogBox.alert({
+                      tapClose: true,  //描述：（可选项）是否点击遮罩层关闭该对话框  默认值：false
+                      texts: {
+                          content: '您的VIP会员已过期',
+                          leftBtnTitle: '在想想',
+                          rightBtnTitle: '去续费'
+                      },
+                      styles:{
+                bg: '#fff',            //（可选项）字符串类型；对话框整体背景配置，支持#、rgb、rgba、img；默认：#fff
+                corner: 10,             //（可选项）数字类型；对话框背景圆角大小；默认：2
+                w: 300,                //（可选项）数字类型；对话框的宽；默认：300
+                title:{                //（可选项）JSON对象；弹窗标题栏样式配置，不传则不显示标题区域
+                    marginT: 20,       //（可选项）数字类型；标题栏与对话框顶端间距；默认：20
+                    icon: 'widget://image/app/dialogBoxTisi.jpg',          //（可选项）字符串类型；标题前面的图标路径，要求本地路径（widget://、fs://）；图片为正方形的，如：50*50、100*100，建议开发者传大小合适的图片以适配高分辨率手机屏幕，不传则不显示
+                    iconSize: 80,      //（可选项）数字类型；icon 图标边长大小,若 icon 不存在则此参数无效；默认：24
+                    titleSize: 14,     //（可选项）数字类型；标题字体大小；默认：14
+                    titleColor: '#000' //（可选项）字符串类型；标题字体颜色，支持#、rgb、rgba；默认：#fff
+                },
+                content:{              //（可选项）JSON 对象；文本内容配置，若不传则不显示该区域
+                    marginT: 20,       //（可选项）数字类型；内容文本顶端与标题栏底端的距离，如果标题栏不存在，则是到窗口顶端的距离；默认：20
+                    marginB: 40,       //（可选项）数字类型；内容文本底端与 left/right 顶端的距离，如果 left/right 都不存在，则是到对话框底端的距离；默认：20
+                    color: '#3d3d3d',     //（可选项）字符串类型；内容文本字体颜色，支持 rgb、rgba、#；默认：#eee
+                    size: 12           //（可选项）数字类型：内容文本字体大小；默认：12
+                },
+                left:{                 //（可选项）JSON 对象；左边按钮样式配置，不传则不显示左边按钮
+                    marginB: 30,        //（可选项）数字类型；左边按钮的下边距；默认：7
+                    marginL: 30,       //（可选项）数字类型；左边按钮的左边距；默认：20
+                    w: 100,            //（可选项）数字类型；左边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；左边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；左边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        //（可选项）字符串类型；左边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+                    color: '#fff',  //（可选项）字符串类型；左边按钮标题字体颜色，支持rgb，rgba、#；默认：'#007FFF'
+                    size: 12           //（可选项）数字类型；左边按钮标题字体大小；默认：12
+                },
+                right: {               //（可选项）JSON 对象；右边按钮样式配置，不传则不显示右边按钮
+                    marginB: 30,        //（可选项）数字类型；右边按钮的下边距；默认：7
+                    marginL: 40,      //（可选项）数字类型；右边按钮左边距；默认：10
+                    w: 100,            //（可选项）数字类型；右边按钮的宽；默认：130
+                    h: 40,             //（可选项）数字类型；右边按钮的高；默认：35
+                    corner: 10,         //（可选项）数字类型；右边按钮圆角半径；默认：0.0
+                    bg: '#3d3d3d',        //（可选项）字符串类型；右边按钮的背景，支持rgb、rgba、#、img；默认：'#e0e'
+                    color: '#fff',  //（可选项）字符串类型；右边按钮标题字体颜色，支持rgb、rgba、#；默认：'#007FFF'
+                    size: 12           //（可选项）数字类型；右边按钮标题字体大小；默认：12
+                }
+            }
+                  }, function(ret) {
+                      if (ret.eventType == 'left') {
+                          var dialogBox = api.require('dialogBox');
+                          dialogBox.close({
+                              dialogName: 'alert'
+                          });
+                      }else if (ret.eventType == 'right') {
+                        api.openWin({
+                            name: 'open_vip_win',
+                            url: './open_vip_win.html',
+                            delay: 300
+                        });
+                        var dialogBox = api.require('dialogBox');
+                        dialogBox.close({
+                            dialogName: 'alert'
+                        });
+                      }
+                  });
+                  /*    会员过期弹窗提示结束    */
+
+}
+	
+	function banNer(){
+  var slide = new auiSlide({
+      container:document.getElementById("aui-slide"),
+      // "width":300,
+      "height":150,
+      "speed":300,
+      "pageShow":true,
+      "autoPlay": 5000,
+      "pageStyle":'dot',
+      "loop":true,
+      'dotPosition':'center',
+  });
+}
+	
+	//电视剧
+function dianshiju(){
+ 
+ var dianshiju = $api.byId('dianshiju');//html容器
+ var dianshijus = $api.byId('dianshijus');//html容器
+  api.ajax({
+         url: api_url+'/App/Youni/xiaobian',
+      method: 'get',
+  },function(ret, err){
+      if (ret) {
+	   var html='';
+
+		for(i in ret){
+		
+			item = ret[i];
+			//alert(item.point);
+			var wang =item.lianjie+'@'+item.pic+'@'+item.biao+'@'+item.tag;
+			html += "<li style='margin-bottom:2px;height:145px;width:49%; margin-right:2px;' onclick=\"openWinj('" + wang + "')\">";
+			
+			html += '<div class="video-mask-box">';
+			html += '<img src="' + item.pic + '" alt="' + item.title + '" style="width: 98%;max-height: 105px;height: 105px;min-height: 105px;">';
+			html +='<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">' + item.tag + '</span>'
+			html += '</div>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%; ">' + item.title + '</span>';
+			//html +='<span class="s2" style="float: right;color: #ff7b00;font-size: 16px;">' + item.point + '</span>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%;color:#A3A3A3;margin-top:-5px;">' + item.biao + '</span>';
+			html += '</li>';
+			
+		}
+		
+        dianshiju.innerHTML = html;
+		
+		
+		
+      }
+  });
+}
+	//电视剧
+	//电影
+function dianying(){
+ 
+ var dianying = $api.byId('dianying');//html容器
+  //var zuixin1 = $api.byId('zuixinj');//js
+ var dianyings = $api.byId('dianyings');//html容器
+ 
+  api.ajax({
+        url: api_url+'/App/Youni/drb.html',
+      method: 'get',
+  },function(ret, err){
+      if (ret) {
+	   var html='';
+
+		for(i in ret){
+
+			item = ret[i];
+			//alert(item.point);
+			var wang =item.lianjie+'@'+item.pic+'@'+item.biao;
+			html += "<li style='margin-bottom: 2px;' onclick=\"openWind('" + wang + "')\">";
+			
+			html += '<div class="video-mask-box">';
+			html += '<img src="' + item.pic + '" alt="' + item.title + '" style="width: 98%;max-height: 155px;height: 155px;min-height: 155px;">';
+			html +='<span class="pay" style="    position: absolute;top: 4px;left: 4px;display: block;width: 39px;height: 19px;line-height: 19px;background: #cd1919;color: #fff;text-align: center;border-radius: 2px;">推荐</span>'
+			html += '</div>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;    width: 100%; ">' + item.title + '</span>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  color:#000;  width: 100%;color:#A3A3A3;margin-top:-20px;">' + item.biao + '</span>';
+			html += '</li>';
+			 
+		}
+        dianying.innerHTML = html;
+		
+		
+		
+      }
+  });
+}
+//电影
+
+//综艺
+function zongyi(){
+ 
+ var zongyi = $api.byId('zongyi');//html容器
+  //var zuixin1 = $api.byId('zuixinj');//js
+var zongyis = $api.byId('zongyis');//html容器
+  api.ajax({
+      url: api_url+'/App/Youni/zzheng',
+      method: 'get',
+  },function(ret, err){
+      if (ret) {
+	   var html='';
+	 
+		for(i in ret){
+		 
+			item = ret[i];
+			//alert(item.point);
+			html += "<li style='margin-bottom:2px;height:145px;width:49%; margin-right:2px;' onclick=\"openWinz('" + item.lianjie + "','" + item.pic + "','" + item.biao + "','" + item.tag + "')\">";
+			
+			html += '<div class="video-mask-box">';
+			html += '<img src="' + item.pic + '" alt="' + item.title + '" style="width: 98%;max-height: 105px;height: 105px;min-height: 105px;">';
+			html +='<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">' + item.tag + '</span>'
+			html += '</div>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%; ">' + item.title + '</span>';
+			//html +='<span class="s2" style="float: right;color: #ff7b00;font-size: 16px;">' + item.point + '</span>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%;color:#A3A3A3;margin-top:-5px;">' + item.biao + '</span>';
+			html += '</li>';
+			 
+		}
+		
+        zongyi.innerHTML = html;
+		
+		
+		
+      }
+  });
+}
+
+
+function dongman(){
+ 
+ var dongman = $api.byId('dongman');//html容器
+  //var zuixin1 = $api.byId('zuixinj');//js
+var dongmans = $api.byId('dongmans')
+  api.ajax({ 
+        url: api_url+'/App/Youni/drebo',
+      method: 'get',
+  },function(ret, err){
+      if (ret) {
+	   var html='';
+	 
+		for(i in ret){
+		  
+			item = ret[i];
+			//alert(item.point);
+		
+	
+			html += "<li style='margin-bottom:2px;height:145px;width:49%; margin-right:2px;' onclick=\"openWinm('" + item.lianjie + "','" + item.pic + "','" + item.biao + "','" + item.tag + "')\">";
+			
+			html += '<div class="video-mask-box">';
+			html += '<img src="' + item.pic + '" alt="' + item.title + '" style="width: 98%;max-height: 105px;height: 105px;min-height: 105px;">';
+			html +='<span class="pay" style="font-size: 12px; position: absolute;right: 3px;bottom: 40px;padding: 2px 6px;background: rgba(0,0,0,0.8);color: #fff;border-radius: 2px;">' + item.tag + '</span>'
+			html += '</div>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%; ">' + item.title + '</span>';
+			//html +='<span class="s2" style="float: right;color: #ff7b00;font-size: 16px;">' + item.point + '</span>';
+			html += '<span class="aui-group-three" style=" font-size: 12px;overflow: hidden;text-overflow: ellipsis;white-space:nowrap;  width: 100%;color:#A3A3A3;margin-top:-5px;">' + item.biao + '</span>';
+			html += '</li>';
+			 
+		}
+        dongman.innerHTML = html;
+		
+		
+		
+      }
+  });
+}
+function ss(){
+
+            var wd = $api.val($api.byId('ff-wd'));
+			api.openWin({
+          name: 'h5',
+          url: './h5.html',
+          pageParam: {
+              url: 'http://vip.winds.fun/index.php/vod/search.html?wd='
+            }
+        });
+    }
+
+		function chaju() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'juji_win',
+				url: 'juji_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chadian() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'dianying_win',
+				url: 'dianying_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chazong() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'zongyi_win',
+				url: 'zongyi_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+		
+		function chaman() {
+			var delay = 0;
+			if(api.systemType != 'ios') {
+				delay = 300;
+			} 
+			api.openWin({
+				name: 'dongman_win',
+				url: 'dongman_win.html',
+				bounces: false,
+				delay: delay,
+				slidBackEnabled: true,
+				vScrollBarEnabled: false,
+				
+			});
+		}
+</script>
+
+
+
+</html>

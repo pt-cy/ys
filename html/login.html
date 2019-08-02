@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <style type="text/css">
+        p {
+            margin-bottom: 0.5rem;
+        }
+        ::-webkit-input-placeholder { /* WebKit browsers */
+            color:    #eaeaea;
+        }
+        :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+            color:    #eaeaea;
+        }
+        ::-moz-placeholder { /* Mozilla Firefox 19+ */
+            color:    #eaeaea;
+        }
+        :-ms-input-placeholder { /* Internet Explorer 10+ */
+            color:    #eaeaea;
+        }
+    </style>
+</head>
+<body class="login-bg2">
+  
+  <header class="aui-bar aui-bar-nav" id="aui-header" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);">
+      <a class="aui-btn aui-pull-left" tapmode onclick="closeWin()">
+          <span class="aui-iconfont aui-icon-left"></span>
+      </a>
+      <div id="title" class="aui-title">会员登录</div>
+  </header>
+
+  <div class="myui-from">
+    <ul class="myui-from-list">
+       <li class="myui-from-list-item"> 
+         <input type="tel" minlength="11" maxlength="11" id="username" placeholder="请输入账号" class="myui-from-list-item-input" value =""> 
+      </li> 
+       <li class="myui-from-list-item"> 
+         <input id="password" type="password" placeholder="请输入密码" class="myui-from-list-item-input" value =""> 
+       </li> 
+		 <li class="myui-from-list-item">
+			<button type="button" name="button" class="myui-from-list-item-button" onclick="loginTo()" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);color:#fff !important;">马上登录</button>
+		</li>
+    </ul>  
+  </div>
+   <div class="to-login-box"> 
+     <div class="to-login" tapmode onclick="openYi()" style="color:#fff;">
+     一键登陆
+    </div>
+   <div class="to-login-l" tapmode onclick="openWin('reg_frm')" style="color:#fff;">
+      注册账号 
+     </div> 
+</div> 
+</body>
+<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript">
+    var api_url = localStorage.getItem('api_url');
+    apiready = function () {
+      api.parseTapmode();
+      var header = $api.byId('aui-header');
+      $api.fixStatusBar(header);
+      var headerPos = $api.offset(header);
+      var body_h = $api.offset($api.dom('body')).h;
+
+
+      
+
+
+    }
+    function closeWin(){
+        api.closeWin({
+        });
+    }
+	function loginTo() {
+		var username = $api.val($api.byId('username'));
+			var password = $api.val($api.byId('password'));
+	
+		if(username == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 调皮~   账号都没输入',
+					duration: 5000
+				});
+				return;
+			}
+			if(password == '') {
+				api.toast({
+					msg: 'ε=(´ο｀*))) 哎呀~   密码还没输入',
+					duration: 5000
+				});
+				return;
+			}
+	
+			api.toast({
+				msg: 'ヾ(◍°∇°◍)ﾉﾞ 努力验证中……',
+				duration: 5000
+			});
+
+			api.closeWin({
+				name: 'reg_frm'
+			});
+	
+			api.ajax({
+				 url: api_url+'/App/Index/denglu.html',
+				method: 'get',
+				data: {
+					values: {
+						username: username,
+						passwd: password,
+						imei: api.deviceId
+					}
+				}
+			}, function(ret, err) {
+				if(ret) {
+					if(ret.code == 0) {
+						api.toast({
+							msg: '(ｷ｀ﾟДﾟ´)!! 账号或密码不正确',
+							duration: 5000
+						});
+
+						return;
+					} else if(ret.code == 1) {
+						/*       alert('登录成功');
+						      原弹窗提示  */
+						api.toast({
+							msg: '(#^.^#) 登陆成功！',
+							duration: 5000
+						});
+						
+						  localStorage.setItem('user_id',ret.msg['id']);
+						  localStorage.setItem('user_name',ret.msg['name']);
+						  localStorage.setItem('pass',ret.msg['pass']);
+						  localStorage.setItem('viptime',ret.msg['viptime']);
+						  localStorage.setItem('mim',ret.msg['mim']);
+						  localStorage.setItem('jifen',ret.msg['jifen']);
+						  localStorage.setItem('price',ret.msg['price']);
+						  localStorage.setItem('money',ret.msg['money']);
+						
+							localStorage.setItem('tuan2',ret.msg['tuan2']);
+						api.sendEvent({
+							name: 'newLoingdata',
+							extra: {}
+						});
+
+						api.hideProgress();
+
+						api.closeWin({});
+
+						// api.openWin({
+						//     name: 'index',
+						//     url: '../index.html',
+						// });
+
+					}
+				} else {
+					api.hideProgress();
+					/*   alert('网络错误！');
+					      原弹窗提示*/
+					api.toast({
+						msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+						duration: 5000
+					});
+
+					//alert( JSON.stringify( err ) );
+					return;
+				}
+			});
+
+	}
+   
+	function openYi(){
+	 api.showProgress({
+          title: '注册中...',
+          text: '请稍等...',
+          modal: false
+      });
+	var deviceId = api.deviceId; 
+			  api.closeWin({
+            name: 'reg_frm'
+        });
+		api.ajax({
+            url: api_url+'/App/Index/yijianzhuce.html',
+            method: 'get',
+            data: {
+                values: {
+                 
+                    uuid:deviceId
+                }
+            }
+        },function(ret, err){
+            if (ret) {
+          
+                api.toast({
+                    msg: '(#^.^#) 登陆成功！',
+                    duration: 5000
+                });
+  
+  
+				  localStorage.setItem('user_id',ret.id);
+                  localStorage.setItem('user_name',ret.name);
+                  localStorage.setItem('pass',ret.pass);
+                  localStorage.setItem('viptime',ret.viptime);
+				  localStorage.setItem('mim',ret.mim);
+				  localStorage.setItem('jifen',ret.jifen);
+                  localStorage.setItem('price',ret.price);
+				  localStorage.setItem('money',ret.money);
+				
+				localStorage.setItem('tuan2',ret.tuan2);
+					api.sendEvent({
+                    name: 'newLoingdata',
+                    extra: {
+                    }
+                  });
+ 
+
+                  api.hideProgress();
+
+                  api.closeWin({
+                  });
+
+              
+            } else {
+              api.hideProgress();
+            /*   alert('网络错误！');
+                  原弹窗提示*/
+                  api.toast({
+                      msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+                      duration: 5000
+                  });
+
+              //alert( JSON.stringify( err ) );
+              return;
+            }
+        });
+	
+	}
+
+
+ function openWin(name){
+          var delay = 0;
+          if(api.systemType != 'ios'){
+              delay = 300;
+          }
+          api.openWin({
+              name: ''+name+'',
+              url: ''+name+'.html',
+              bounces:false,
+              delay: delay,
+              slidBackEnabled:true,
+              vScrollBarEnabled:false
+          });
+      }
+
+</script>
+</html>

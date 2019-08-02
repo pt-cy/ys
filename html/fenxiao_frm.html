@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>开发</title>
+
+	 <link rel="stylesheet" type="text/css" href="../css/fstyle.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/foxui.min.css"/>
+    <style>
+        .empty{ text-align: center; padding: 120px 0; }
+    </style>
+</head>
+<body>
+   <div class="fui-page fui-page-current page-commission-index" >
+	
+  
+	<div class="headinfo" style="background-image:url('../image/a.png');">
+	    <div class="userinfo" style="height: auto;">
+			<div class="fui-list">
+				<div class="fui-list-media"><img src="../image/app/user.jpg"></div>
+				<div class="fui-list-info" style="width: 12rem">
+				<div class="title" id="title"> </div>
+					<div class="text" id="tuijian">
+												<br>
+					</div>
+					<div class="subtitle" id="shenfen"></div>
+				</div>
+			</div>
+			    </div>
+	</div>
+		<div class="fui-cell-group" style="    margin-top: 0rem;">
+			<div class="fui-cell" style="    height: 2.85rem;">
+				<div class="fui-cell-icon">
+					<svg class="icon1" aria-hidden="true">
+					
+					</svg>
+				</div>
+				<div class="fui-cell-text" id="yaoqing"></div>
+				
+			</div>
+		</div>
+		
+		<div class="userblock">
+			<div class="line total new">
+				<div class="num" id="cheng">0.00</div>
+				<div class="title">成功提现佣金(元)</div>
+			</div>
+			<div class="line usable new">
+
+				<div class="text">
+					<div class="num" id="money"></div>
+					<div class="title">可提现佣金(元)</div>
+				</div>
+								<div class="btn btn-warning disabled" onClick="tixian()" style="background: #282828;">佣金提现</div>
+							</div>
+		</div>
+	<div class="fui-block-group new col-2" style="overflow: hidden;" >
+            <a class="fui-block-child new  external" onClick="openWin('tixian_win')">
+                <div class="icon " style="color: #ff4357;"><i class="icon icon-qian"></i></div>
+                <div class="text new">
+					<div class="title">提现明细</div>
+                   <div class=""><span id="ti">2</span> 笔</div>
+				</div>
+            </a>
+            <a class="fui-block-child new external" onClick="openWin('fenxiaod_win')">
+                <div class="icon" style="color: #9ec9f4;"><i class="icon icon-dingdan2"></i></div>
+				<div class="text new">
+					<div class="title">分销订单</div>
+					<div class=""><span id="fen">2</span> 笔</div>
+				</div>
+            </a> 
+            <a class="fui-block-child new  external" onClick="openWin('tuandui_win')">
+                <div class="icon" style="color: #ffbe2e;"><i class="icon icon-tixian1"></i></div>
+				 <div class="text new">
+					<div class="title">我的团队</div>
+                   <div class=""><span id="tuan">2</span> 人</div>
+				</div>
+            </a>
+            <a class="fui-block-child new  external" onClick="openWin('share_win')" >
+             <div class="icon" style="color: #ffbe2e;"><i class="icon icon-tixian1"></i></div>
+				 <div class="text new">
+					<div class="title">分享推广</div>
+                   <div class="">立即邀请</div>
+				</div>
+            </a>
+		
+	    
+	</div>
+	
+</div>
+</body>
+
+	<script type="text/javascript" src="../script/api.js"></script>
+    <script type="text/javascript">
+	 var api_url = localStorage.getItem('api_url');
+      apiready = function(){
+	  
+		var title = $api.byId('title');
+		
+		api.ajax({
+				url: api_url+'/App/Index/fenge.html',
+				method: 'get',
+				data: {
+					values: {
+						uid:localStorage.getItem('user_id'),
+					}
+				}
+			},function(ret, err){
+				if (ret) {
+					var title = $api.byId('title');
+					title.innerHTML = ret.name;
+					var tuijian = $api.byId('tuijian');
+					if(ret.name1){
+					tuijian.innerHTML = '推荐人：'+ret.name1;
+					}else{
+					tuijian.innerHTML = '推荐人：官方';
+					}
+					if(ret.status==1){
+					
+						var shenfen = $api.byId('shenfen');
+						shenfen.innerHTML = '默认等级'
+					}else{
+						var shenfen = $api.byId('shenfen');
+						shenfen.innerHTML = '尊贵代理'
+					}
+					var yaoqing = $api.byId('yaoqing');
+					yaoqing.innerHTML = '我的邀请码：'+ret.id;
+					var money = $api.byId('money');
+					if(ret.money){
+					money.innerHTML =  ret.money;
+					}else{
+					
+					money.innerHTML = 0;
+					
+					}
+					var fen = $api.byId('fen');
+					if(ret.fen){
+					fen.innerHTML =ret.fen;
+					}else{
+					
+					fen.innerHTML = 0;
+					}
+					var cheng = $api.byId('cheng');
+					if(ret.cheng){
+					cheng.innerHTML =ret.cheng;
+					}else{
+					cheng.innerHTML =0;
+					}
+					var ti = $api.byId('ti');
+					if(ret.ti){
+					ti.innerHTML = ret.ti;
+					}else{
+					
+					ti.innerHTML =0;
+					}
+					
+					var tuan = $api.byId('tuan');
+					if(ret.tuan){
+					tuan.innerHTML = ret.tuan;
+					}else{
+					
+					tuan.innerHTML =0;
+					}
+					
+				} else {
+				  api.hideProgress();
+				/*   alert('网络错误！');
+					  原弹窗提示*/
+					  api.toast({
+						  msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+						  duration: 5000
+					  });
+
+				  //alert( JSON.stringify( err ) );
+				  return;
+				}
+			});
+		
+	  }
+		
+		 function openWin(name){
+		api.openWin({
+			  name: ''+name+'',
+			  url: ''+name+'.html',
+			 
+		  });
+	}
+		
+		function tixian(){
+
+			var dialogBox = api.require('dialogBox');
+				dialogBox.input({
+					keyboardType: 'default',
+					texts: {
+						title: '申请提现',
+						placeholder: '输入提现金额,只能输入数字,否则冻结资金',
+						leftBtnTitle: '取消',
+						rightBtnTitle: '确定'
+					},
+					styles: {
+						bg: '#fff',
+						corner: 2,
+						w: 300,
+						h: 240,
+						title: {
+							h: 60,
+							alignment: 'center',
+							size: 14,
+							color: '#000',
+							marginT:30,
+						},
+						input: {
+							h: 60,
+							y:30,
+							marginT:15,
+							marginLeft: 10,
+							marginRight:10,
+							textSize: 14,
+							textColor: '#000'
+						},
+						dividingLine: {
+							width: 0.5,
+							color: '#696969'
+						},
+						left: {
+							bg: 'rgba(0,0,0,0)',
+							color: '#007FFF',
+							size: 12
+						},
+						right: {
+							bg: 'rgba(0,0,0,0)',
+							color: '#007FFF',
+							size: 12
+						}
+					}
+				}, function(ret) {
+				
+				   if (ret.eventType == 'right') {
+						 var jine = ret.text
+						 
+						if(jine==''){
+						
+							api.alert({
+									msg: '(ｷ｀ﾟДﾟ´)!!  请输入金额！',
+									duration: 5000
+								});
+						
+						}else{ 
+						api.ajax({
+							url: api_url+'/App/Index/sqtixian.html',
+							method: 'get',
+							data: {
+								values: {
+									jine:jine,
+									uid:localStorage.getItem('user_id'),
+									uname:localStorage.getItem('user_name'),
+									
+								}
+							}
+						},function(ret, err){
+							if (ret) {
+							
+							 if (ret.code == 1) {
+							 var dialogBox = api.require('dialogBox');
+									dialogBox.close({
+										dialogName: 'input'
+									});
+								api.alert({
+									msg: ret.msg,  
+									duration: 5000
+								});
+							 }else if(ret.code == 0){
+									api.alert({
+									msg: ret.msg,
+									duration: 5000
+								});
+							 }   
+								  
+							} else {
+							  api.hideProgress();
+							/*   alert('网络错误！');
+								  原弹窗提示*/
+								  api.toast({
+									  msg: '(ｷ｀ﾟДﾟ´)!!  网络错误 请检查！',
+									  duration: 5000
+								  });
+
+							  //alert( JSON.stringify( err ) );
+							  return;
+							}
+						});
+				   
+				   }
+				   
+				   }
+				   
+					if (ret.eventType == 'left') {
+						var dialogBox = api.require('dialogBox');
+						dialogBox.close({
+							dialogName: 'input'
+						});
+					}
+				
+				
+				
+				
+				});
+			
+		
+	  }
+	</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style1.css" />
+    <style>
+        body {}
+
+        #aui-header {
+            padding-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+   <header class="aui-navBar aui-navBar-fixed" style="background: linear-gradient(to right,#626ec0 0,#7C15E5 100%);;" id="aui-header">
+								<a  onclick="closeWin()" class="aui-navBar-item"  >
+							<i class="icon icon-back"></i>
+								</a>
+								<div class="aui-center">
+										<span class="aui-center-title"   id="title" style="color: #fff;" >积分商城</span>
+								</div>
+
+			<!-- 直接清除					<a  onclick="clearR()" class="aui-navBar-item" style="color: #725f5f;"  >  -->
+									<a class="aui-navBar-item" style="color: #fff;"  >
+								<i class="icon icon-qingli"></i> 
+								</a>
+
+						</header>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript">
+    apiready = function() {
+      var header = $api.offset($api.dom('#aui-header')).h;
+      api.openFrame({
+          name: 'jfdh_frm',
+          url: 'jfdh_frm.html',
+          rect: {
+              x: 0,
+              y: header,
+              w: 'auto',
+              h: 'auto'
+          },
+          bounces: true,
+          bgColor: 'rgba(0,0,0,0)',
+          vScrollBarEnabled: true,
+          hScrollBarEnabled: true
+      });
+
+
+    };
+
+    function closeWin() {
+      api.closeWin();
+    }
+</script>
+
+</html>
